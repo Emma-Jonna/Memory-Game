@@ -3,40 +3,27 @@
 import styles from "./page.module.css";
 import DifficultyButton from "@/components/buttons/DifficultyButton";
 import StartButton from "@/components/buttons/StartButton";
-import {useState, useContext} from "react";
+import {useState, useContext, useEffect} from "react";
 import {GameDifficultyContext} from "./contexts/DifficultyContext";
 
 export default function Home() {
   const {chosendifficulty, changeDifficultyTo, gameDifficulties} = useContext(
     GameDifficultyContext
   ) as GameDifficultyContext;
-  /*   type GameDifficulties = {
-    name: string;
-    numberOfCards: number;
-  }; */
+  const [startbutton, setStartbutton] = useState(true);
 
-  // const [chosendifficulty, setChosendifficulty] = useState<GameDifficulties>();
+  useEffect(() => {
+    if (chosendifficulty != null) {
+      console.log("startbutton is active");
+      setStartbutton(false);
+    } else {
+      console.log("startbutton is not active");
+    }
+  }, [chosendifficulty]);
 
-  /*  const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    // console.log(event);
-    // console.log(event.target);
-    // console.log(event.currentTarget);
-    // console.log(event.currentTarget.value);
-    // console.log(event.currentTarget.id);
-    gameDifficulties.forEach((element) => {
-      if (element.name == event.currentTarget.id) {
-        setChosendifficulty(element);
-        console.log(element);
-      }
-    });
-
-    // console.log(chosendifficulty?.name);
-
-    // setChosendifficulty(event.currentTarget.)
-  };
- */
   const handleSubmit = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     console.log(event.currentTarget);
+
     if (chosendifficulty == null) {
       console.log("no difficulty chosen");
       return;
@@ -44,20 +31,6 @@ export default function Home() {
       console.log("the chosen difficulty is", chosendifficulty.name);
     }
   };
-
-  // console.log(chosendifficulty);
-
-  /*  const gameDifficulties: GameDifficulties[] = [
-    {
-      name: "easy",
-      numberOfCards: 12,
-    },
-    {
-      name: "medium",
-      numberOfCards: 20,
-    },
-    {name: "hard", numberOfCards: 30},
-  ]; */
 
   return (
     <main className={styles.main}>
@@ -77,7 +50,7 @@ export default function Home() {
         })}
       </div>
 
-      <StartButton onClick={handleSubmit} />
+      <StartButton className="start-button" onClick={handleSubmit} disabled={startbutton} />
     </main>
   );
 }

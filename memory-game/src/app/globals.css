@@ -26,3 +26,11 @@ body {
     color-scheme: dark;
   }
 }
+
+.start-button:disabled {
+  background-color: red;
+}
+
+.start-button {
+  background-color: green;
+}
