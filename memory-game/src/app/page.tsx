@@ -3,15 +3,21 @@
 import styles from "./page.module.css";
 import DifficultyButton from "@/components/buttons/DifficultyButton";
 import StartButton from "@/components/buttons/StartButton";
-import {useState} from "react";
+import {useState, useContext} from "react";
+import {GameDifficultyContext} from "./contexts/DifficultyContext";
 
 export default function Home() {
-  type GameDifficulties = {
+  const {chosendifficulty, changeDifficultyTo, gameDifficulties} = useContext(
+    GameDifficultyContext
+  ) as GameDifficultyContext;
+  /*   type GameDifficulties = {
     name: string;
     numberOfCards: number;
-  };
-  const [chosendifficulty, setChosendifficulty] = useState<GameDifficulties>();
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  }; */
+
+  // const [chosendifficulty, setChosendifficulty] = useState<GameDifficulties>();
+
+  /*  const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     // console.log(event);
     // console.log(event.target);
     // console.log(event.currentTarget);
@@ -28,10 +34,10 @@ export default function Home() {
 
     // setChosendifficulty(event.currentTarget.)
   };
-
+ */
   const handleSubmit = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     console.log(event.currentTarget);
-    if (!chosendifficulty) {
+    if (chosendifficulty == null) {
       console.log("no difficulty chosen");
       return;
     } else {
@@ -39,9 +45,9 @@ export default function Home() {
     }
   };
 
-  console.log(chosendifficulty);
+  // console.log(chosendifficulty);
 
-  const gameDifficulties: GameDifficulties[] = [
+  /*  const gameDifficulties: GameDifficulties[] = [
     {
       name: "easy",
       numberOfCards: 12,
@@ -51,7 +57,7 @@ export default function Home() {
       numberOfCards: 20,
     },
     {name: "hard", numberOfCards: 30},
-  ];
+  ]; */
 
   return (
     <main className={styles.main}>
@@ -64,7 +70,7 @@ export default function Home() {
               key={data.name}
               id={data.name}
               difficulty={data.name}
-              onClick={handleClick}
+              onClick={changeDifficultyTo}
               value={data.numberOfCards}
             />
           );
