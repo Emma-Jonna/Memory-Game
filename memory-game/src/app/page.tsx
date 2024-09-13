@@ -14,22 +14,16 @@ export default function Home() {
 
   useEffect(() => {
     if (chosendifficulty != null) {
-      console.log("startbutton is active");
       setStartbutton(false);
-    } else {
-      console.log("startbutton is not active");
     }
   }, [chosendifficulty]);
 
   const handleSubmit = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    console.log(event.currentTarget);
-
-    if (chosendifficulty == null) {
-      console.log("no difficulty chosen");
-      return;
-    } else {
+    if (chosendifficulty != null) {
       console.log("the chosen difficulty is", chosendifficulty.name);
     }
+
+    return;
   };
 
   return (

@@ -10,7 +10,6 @@ const DifficultyButton = ({
   id: string;
   className?: string;
   value: number;
-  // difficulty: "easy" | "medium" | "hard";
   difficulty: string;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
