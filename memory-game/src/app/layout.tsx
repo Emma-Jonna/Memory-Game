@@ -2,6 +2,7 @@ import type {Metadata} from "next";
 import {Inter} from "next/font/google";
 import "./globals.css";
 import {GameDifficultyContextProvider} from "./contexts/DifficultyContext";
+import {DeckOfCardsContextContextProvider} from "./contexts/DeckOfCardsContext";
 
 const inter = Inter({subsets: ["latin"]});
 
@@ -18,7 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <GameDifficultyContextProvider>{children}</GameDifficultyContextProvider>
+        <GameDifficultyContextProvider>
+          <DeckOfCardsContextContextProvider>{children}</DeckOfCardsContextContextProvider>
+        </GameDifficultyContextProvider>
       </body>
     </html>
   );
