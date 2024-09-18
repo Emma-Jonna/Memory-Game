@@ -21,20 +21,19 @@ const GameDifficultyContextProvider = ({children}: {children: React.ReactNode}) 
   const gameDifficulties: GameDifficulty[] = [
     {
       name: "easy",
-      numberOfCards: 12,
+      numberOfCards: 6,
     },
     {
       name: "medium",
-      numberOfCards: 20,
+      numberOfCards: 10,
     },
-    {name: "hard", numberOfCards: 30},
+    {name: "hard", numberOfCards: 15},
   ];
 
   const changeDifficultyTo = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     gameDifficulties.forEach((element) => {
       if (element.name == event.currentTarget.id) {
         setChosendifficulty(element);
-        console.log(element);
       }
     });
   };
