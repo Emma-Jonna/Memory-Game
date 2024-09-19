@@ -5,12 +5,17 @@ import DifficultyButton from "@/components/buttons/DifficultyButton";
 import StartButton from "@/components/buttons/StartButton";
 import {useState, useContext, useEffect} from "react";
 import {GameDifficultyContext} from "./contexts/DifficultyContext";
+import {DeckOfCardsContext} from "./contexts/DeckOfCardsContext";
+
+import {redirect, useRouter} from "next/navigation";
 
 export default function Home() {
   const {chosendifficulty, changeDifficultyTo, gameDifficulties} = useContext(
     GameDifficultyContext
   ) as GameDifficultyContext;
+  const {getRandomCardsForGame, deckOfCards} = useContext(DeckOfCardsContext) as DeckOfCardsContext;
   const [startbutton, setStartbutton] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     if (chosendifficulty != null) {
@@ -20,10 +25,10 @@ export default function Home() {
 
   const handleSubmit = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     if (chosendifficulty != null) {
-      console.log("the chosen difficulty is", chosendifficulty.name);
+      getRandomCardsForGame(chosendifficulty.numberOfCards);
+      // redirect("/game-board");
+      router.push("/game-board");
     }
-
-    return;
   };
 
   return (
