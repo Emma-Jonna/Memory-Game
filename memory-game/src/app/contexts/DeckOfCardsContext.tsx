@@ -3,8 +3,10 @@
 import {createContext, useState} from "react";
 
 type cardInfo = {
+  id: number;
   name: string;
-  imageUrl: string;
+  frontImage: string;
+  backImage: String;
 };
 
 type cardDeck = cardInfo[];
@@ -20,21 +22,21 @@ const DeckOfCardsContextContextProvider = ({children}: {children: React.ReactNod
   const [deckOfCards, setDeckOfCards] = useState<cardDeck | []>([]);
 
   const listOfAllCards: cardDeck = [
-    {name: "cat", imageUrl: ""},
-    {name: "witch hat", imageUrl: ""},
-    {name: "pumpkin", imageUrl: ""},
-    {name: "potion", imageUrl: ""},
-    {name: "broom", imageUrl: ""},
-    {name: "wand", imageUrl: ""},
-    {name: "crystal ball", imageUrl: ""},
-    {name: "leaf", imageUrl: ""},
-    {name: "candle", imageUrl: ""},
-    {name: "skeleton", imageUrl: ""},
-    {name: "tombstone", imageUrl: ""},
-    {name: "cauldron", imageUrl: ""},
-    {name: "ghost", imageUrl: ""},
-    {name: "mushroom", imageUrl: ""},
-    {name: "moon", imageUrl: ""},
+    {id: 1, name: "cat", frontImage: "", backImage: ""},
+    {id: 2, name: "witch hat", frontImage: "", backImage: ""},
+    {id: 3, name: "pumpkin", frontImage: "", backImage: ""},
+    {id: 4, name: "potion", frontImage: "", backImage: ""},
+    {id: 5, name: "broom", frontImage: "", backImage: ""},
+    {id: 6, name: "wand", frontImage: "", backImage: ""},
+    {id: 7, name: "crystal ball", frontImage: "", backImage: ""},
+    {id: 8, name: "leaf", frontImage: "", backImage: ""},
+    {id: 9, name: "candle", frontImage: "", backImage: ""},
+    {id: 10, name: "skeleton", frontImage: "", backImage: ""},
+    {id: 11, name: "tombstone", frontImage: "", backImage: ""},
+    {id: 12, name: "cauldron", frontImage: "", backImage: ""},
+    {id: 13, name: "ghost", frontImage: "", backImage: ""},
+    {id: 14, name: "mushroom", frontImage: "", backImage: ""},
+    {id: 15, name: "moon", frontImage: "", backImage: ""},
   ];
 
   const shuffle = (cards: number[]) => {
